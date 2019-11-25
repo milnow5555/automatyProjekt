@@ -2,4 +2,6 @@
     <string name="app_name">Music Service</string>
     <string name="password_error">Password must have  at least 8 characters</string>
     <string name="email_error">Invalid email</string>
+    <string name="username_error">Username must consist of at least 3 characters</string>
+    <string name="registration_failed">Registration Failed!"</string>
 </resources>

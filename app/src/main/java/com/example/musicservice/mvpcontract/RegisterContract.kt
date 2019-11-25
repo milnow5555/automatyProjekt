@@ -8,6 +8,8 @@ interface RegisterContract {
         fun onDelegateToLogin()
         fun showEmailError()
         fun showPasswordError()
+        fun showUsernameError()
+        fun onFailRegistration()
     }
 
     interface RegisterPresenter {

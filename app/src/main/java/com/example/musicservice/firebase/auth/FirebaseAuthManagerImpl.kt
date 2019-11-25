@@ -7,13 +7,19 @@ import javax.inject.Inject
 class FirebaseAuthManagerImpl @Inject constructor(private val authentication: FirebaseAuth): FirebaseAuthManager{
 
     override fun login(email: String, password: String) {
+        println("LOGIN-------------------------------------------------------")
         authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-          if(it.isComplete && it.isSuccessful) println("SUCCESSFUL -------------")
-          else println("NOT SUCCESSFUL -------------")
+          if(it.isComplete && it.isSuccessful){
+              println("LOGIN------------------------------------------------------succ-")
+          }
+          else{
+              println("LOGIN-----------------------------------------------------noot-succ-")
+          }
         }
     }
 
     override fun register(email: String, password: String, userName: String) {
+        println("USER BEFOR nd user = ${authentication.currentUser?.email}" )
         authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isComplete && it.isSuccessful) {
                 authentication.currentUser?.updateProfile(
@@ -21,11 +27,17 @@ class FirebaseAuthManagerImpl @Inject constructor(private val authentication: Fi
                     .Builder()
                     .setDisplayName(userName)
                     .build())
-                println("SUCCESSFUL -------------")
-            } else {
-                println("NOT SUCCESSFUL -------------")
+                println("SUCCESFUL REGISTRATION")
+                login(email, password)
+            }else {
+                println("NOT SUCCESFUL REGISTRATION")
             }
         }
+        println("USER AFTER nd user = ${authentication.currentUser?.email}" )
+    }
+
+    fun onAuthStateChanges(){
+        authentication.addAuthStateListener {  }
     }
 
     override fun getUserId(): String = authentication.currentUser?.uid ?: ""

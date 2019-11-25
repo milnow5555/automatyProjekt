@@ -1,7 +1,9 @@
 package com.example.musicservice
 
 import android.app.Application
+import com.example.musicservice.di.DaggerMusicAppComponent
 import com.example.musicservice.di.MusicAppComponent
+import com.example.musicservice.di.modules.AppModule
 import com.google.firebase.FirebaseApp
 
 class MusicApp : Application() {
@@ -15,8 +17,9 @@ class MusicApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        instance  = this
 
         FirebaseApp.initializeApp(this)
     }
+
 }
