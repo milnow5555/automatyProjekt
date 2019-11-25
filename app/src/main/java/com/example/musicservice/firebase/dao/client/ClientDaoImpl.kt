@@ -18,6 +18,10 @@ class ClientDaoImpl @Inject constructor(private val auth : FirebaseAuth, private
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun save(t: Client) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun getById(id: Int): Client {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

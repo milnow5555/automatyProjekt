@@ -1,5 +1,6 @@
 package com.example.musicservice.presenter
 
+import android.widget.Toast
 import com.example.musicservice.common.Validator
 import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.mvpcontract.LoginContract
@@ -17,17 +18,17 @@ class LoginPresenter @Inject constructor(private val auth : FirebaseAuthManager)
     }
     override fun onSignInButtonClicked(email: String, password: String) {
         if(inputIsValid(email, password)){
-            auth.login(email, password).addOnSuccessListener {
+            auth.login(email, password).addOnSuccessListener  {
                 /*TODO delegating to appropriate main menu
-                *  onLoginSuccess()*/
-                 }
+                *  onMusicProviderLoginSuccess()*/
+                println("TUUUU------------")
+                view.onClientLoginSuccess()
+                 }.addOnFailureListener {
+                view.onLoginFailedToast() }
         }
     }
 
     override fun onSignUpButtonClicked() = view.delegateToRegistrationActivity()
-
-    override fun onLoginSuccess() {} /*view.onLoginSuccess()*/
-
 
     private fun inputIsValid(email: String, password: String) : Boolean {
         if(!Validator.isEmailValid(email)) {

@@ -6,17 +6,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import javax.inject.Inject
 
+
+//https://medium.com/@cervonefrancesco/model-view-presenter-android-guidelines-94970b430ddf
 class FirebaseAuthManagerImpl @Inject constructor(private val authentication: FirebaseAuth): FirebaseAuthManager{
 
     override fun login(email: String, password: String) : Task<AuthResult>{
-        println("LOGIN-------------------------------------------------------")
         return authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-          if(it.isComplete && it.isSuccessful){
-              println("LOGIN------------------------------------------------------succ-")
-          }
-          else{
-              println("LOGIN-----------------------------------------------------noot-succ-")
-          }
+          if(it.isComplete && it.isSuccessful)println("LOGIN------------------------------------------------------succ-")
+          else println("LOGIN-----------------------------------------------------noot-succ-")
+
         }
     }
 

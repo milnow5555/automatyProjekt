@@ -6,13 +6,13 @@ interface LoginContract {
         fun showEmailError()
         fun showPasswordError()
         fun onClientLoginSuccess()
-        fun onMusicProvderLoginSuccess()
+        fun onMusicProviderLoginSuccess()
         fun delegateToRegistrationActivity()
+        fun onLoginFailedToast()
     }
     interface LoginPresenter {
         fun onSignInButtonClicked(email:String, password:String)
         fun onSignUpButtonClicked()
-        fun onLoginSuccess()
         fun initLogOut()
     }
 

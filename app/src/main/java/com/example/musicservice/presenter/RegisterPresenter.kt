@@ -9,6 +9,7 @@ import javax.inject.Inject
 class RegisterPresenter @Inject constructor(private val auth : FirebaseAuthManager) : BasePresenter<RegisterContract.RegisterView>, RegisterContract.RegisterPresenter {
 
     private lateinit var view : RegisterContract.RegisterView
+    private var userType : String = "client"
 
     override fun setView(view: RegisterContract.RegisterView) {
         this.view = view
@@ -22,6 +23,10 @@ class RegisterPresenter @Inject constructor(private val auth : FirebaseAuthManag
         }
     }
 
+    override fun onCheckboxUsed(userType: String) {
+        this.userType = userType
+    }
+
     private fun tryToRegister(email: String, password: String, username: String){
         val register = auth.register(email, password, username)
         view.showProgressBar()
@@ -29,7 +34,9 @@ class RegisterPresenter @Inject constructor(private val auth : FirebaseAuthManag
             auth.onAuthStateChangesListener()
             auth.login(email, password).addOnSuccessListener {
                 if(auth.getUserName().isNotEmpty()) {
-                    view.onRegisterSuccess()
+                    if(userType == "client") view.onClientRegisterSuccess()
+                    else view.onMusicProviderRegisterSuccess()
+
                 }
             }
         }

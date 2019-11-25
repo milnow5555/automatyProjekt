@@ -3,14 +3,12 @@ package com.example.musicservice.ui.client
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.musicservice.R
-import com.example.musicservice.firebase.auth.FirebaseAuthManager
-import com.google.firebase.database.FirebaseDatabase
-import javax.inject.Inject
+import com.example.musicservice.mvpcontract.client.ClientDetailsFormContract
 
-class ClientDetailsRegistrationFormActivity : AppCompatActivity(){
+class ClientDetailsFormActivity : AppCompatActivity(), ClientDetailsFormContract.ClientDetailsFormView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration_delegation_client)
+        setContentView(R.layout.activity_client_details_form)
         println("CLIENT DETAILS")
     }
 }

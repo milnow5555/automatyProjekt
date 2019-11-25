@@ -44,6 +44,14 @@
         android:layout_alignParentBottom="true"
         android:gravity="center">
 
+        <CheckBox
+            android:id="@+id/user_type_check_box_registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_middle"
+            android:text="Register as Music Provider"
+            android:textColor="@color/grey"/>
+
         <EditText
             android:id="@+id/input_username_registration"
             android:layout_width="match_parent"

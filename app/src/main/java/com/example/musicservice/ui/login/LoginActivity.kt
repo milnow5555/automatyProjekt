@@ -8,6 +8,8 @@ import com.example.musicservice.MusicApp.Companion.component
 import com.example.musicservice.R
 import com.example.musicservice.mvpcontract.LoginContract
 import com.example.musicservice.presenter.LoginPresenter
+import com.example.musicservice.ui.client.ClientDetailsFormActivity
+import com.example.musicservice.ui.client.ClientMainMenuActivity
 import com.example.musicservice.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -41,20 +43,32 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
     }
 
     override fun showPasswordError() {
-        input_password_registration.error = getString(R.string.password_error)
+        input_password_login.error = getString(R.string.password_error)
     }
 
     override fun showEmailError() {
-        input_email_registration.error = getString(R.string.email_error)
+        input_email_login.error = getString(R.string.email_error)
+    }
+
+    override fun onLoginFailedToast() = Toast.makeText(this, "Login failed!", Toast.LENGTH_SHORT).show()
+
+
+    override fun onMusicProviderLoginSuccess() {
+/*      todo
+        startActivity(getIntentStartingNewActivityStack(MusicPro))
+*/
     }
 
     override fun onClientLoginSuccess() {
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(getIntentStartingNewActivityStack(ClientMainMenuActivity::class.java))
     }
 
-    override fun onMusicProvderLoginSuccess() {
-        startActivity(Intent(this, LoginActivity::class.java))
+    private fun <T> getIntentStartingNewActivityStack(classType : Class<T>) : Intent{
+        var intent = Intent(this, classType)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        return intent
     }
+
     override fun delegateToRegistrationActivity() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }
