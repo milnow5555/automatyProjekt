@@ -11,11 +11,7 @@ import javax.inject.Inject
 class FirebaseAuthManagerImpl @Inject constructor(private val authentication: FirebaseAuth): FirebaseAuthManager{
 
     override fun login(email: String, password: String) : Task<AuthResult>{
-        return authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-          if(it.isComplete && it.isSuccessful)println("LOGIN------------------------------------------------------succ-")
-          else println("LOGIN-----------------------------------------------------noot-succ-")
-
-        }
+        return authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {}
     }
 
     override fun register(email: String, password: String, userName: String) : Task<AuthResult>{

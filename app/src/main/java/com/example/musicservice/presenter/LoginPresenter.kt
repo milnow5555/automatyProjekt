@@ -21,7 +21,7 @@ class LoginPresenter @Inject constructor(private val auth : FirebaseAuthManager)
             auth.login(email, password).addOnSuccessListener  {
                 /*TODO delegating to appropriate main menu
                 *  onMusicProviderLoginSuccess()*/
-                println("TUUUU------------")
+                println(auth.getUserName())
                 view.onClientLoginSuccess()
                  }.addOnFailureListener {
                 view.onLoginFailedToast() }
