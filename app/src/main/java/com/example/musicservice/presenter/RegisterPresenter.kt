@@ -1,13 +1,11 @@
 package com.example.musicservice.presenter
 
-import android.widget.Toast
 import com.example.musicservice.common.Validator
 import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.mvpcontract.RegisterContract
 import javax.inject.Inject
 
 
-//TODO add method onCheckboxSigned
 class RegisterPresenter @Inject constructor(private val auth : FirebaseAuthManager) : BasePresenter<RegisterContract.RegisterView>, RegisterContract.RegisterPresenter {
 
     private lateinit var view : RegisterContract.RegisterView
@@ -18,27 +16,24 @@ class RegisterPresenter @Inject constructor(private val auth : FirebaseAuthManag
 
     override fun onSignInButtonClicked() = view.onDelegateToLogin()
 
-
     override fun onSignUpButtonClicked(email: String, password: String, username: String) {
-
         if(inputIsValid(email,password,username)){
            tryToRegister(email, password, username)
         }
-        /*
-        * TODO
-        *   if checkbox = true view.delegate to MusicProviderDdetails else ClientDetails
-        * */
     }
 
     private fun tryToRegister(email: String, password: String, username: String){
-        auth.register(email, password, username)
-        if(!auth.getUserName().isEmpty()) {
-            println("DELEGATION SUCCESS")
-            view.onRegisterSuccess()
-        } else{
-            println("DELEGATION FALIURE")
-            view.onFailRegistration()
+        val register = auth.register(email, password, username)
+        view.showProgressBar()
+        register.addOnCompleteListener{
+            auth.onAuthStateChangesListener()
+            auth.login(email, password).addOnSuccessListener {
+                if(auth.getUserName().isNotEmpty()) {
+                    view.onRegisterSuccess()
+                }
+            }
         }
+        view.hideProgressBar()
     }
 
     private fun inputIsValid(email: String, password: String, username: String) : Boolean {

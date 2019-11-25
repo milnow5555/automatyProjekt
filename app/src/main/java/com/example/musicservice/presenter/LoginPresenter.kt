@@ -16,17 +16,17 @@ class LoginPresenter @Inject constructor(private val auth : FirebaseAuthManager)
         auth.logOut()
     }
     override fun onSignInButtonClicked(email: String, password: String) {
-        Timber.i("LOGIN PRESENTER BEFORE VALIDATION")
         if(inputIsValid(email, password)){
-            Timber.i("LOGIN PRESENTER AFTER VALIDATION")
-            auth.login(email, password)
+            auth.login(email, password).addOnSuccessListener {
+                /*TODO delegating to appropriate main menu
+                *  onLoginSuccess()*/
+                 }
         }
-        /*TODO delegating to appropriate main menu*/
     }
 
     override fun onSignUpButtonClicked() = view.delegateToRegistrationActivity()
 
-    override fun onLoginSuccess() = view.onLoginSuccess()
+    override fun onLoginSuccess() {} /*view.onLoginSuccess()*/
 
 
     private fun inputIsValid(email: String, password: String) : Boolean {

@@ -1,14 +1,16 @@
 package com.example.musicservice.firebase.auth
 
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import javax.inject.Inject
 
 class FirebaseAuthManagerImpl @Inject constructor(private val authentication: FirebaseAuth): FirebaseAuthManager{
 
-    override fun login(email: String, password: String) {
+    override fun login(email: String, password: String) : Task<AuthResult>{
         println("LOGIN-------------------------------------------------------")
-        authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+        return authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
           if(it.isComplete && it.isSuccessful){
               println("LOGIN------------------------------------------------------succ-")
           }
@@ -18,26 +20,24 @@ class FirebaseAuthManagerImpl @Inject constructor(private val authentication: Fi
         }
     }
 
-    override fun register(email: String, password: String, userName: String) {
-        println("USER BEFOR nd user = ${authentication.currentUser?.email}" )
-        authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+    override fun register(email: String, password: String, userName: String) : Task<AuthResult>{
+        return authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isComplete && it.isSuccessful) {
                 authentication.currentUser?.updateProfile(
                     UserProfileChangeRequest
-                    .Builder()
-                    .setDisplayName(userName)
-                    .build())
-                println("SUCCESFUL REGISTRATION")
-                login(email, password)
-            }else {
-                println("NOT SUCCESFUL REGISTRATION")
+                        .Builder()
+                        .setDisplayName(userName)
+                        .build()
+                )
+                println("SUCCESFUL REGISTRATION ${authentication.currentUser?.email}")
             }
         }
-        println("USER AFTER nd user = ${authentication.currentUser?.email}" )
     }
 
-    fun onAuthStateChanges(){
-        authentication.addAuthStateListener {  }
+    override fun onAuthStateChangesListener(){
+        authentication.addAuthStateListener {
+            println("STATE ${it.currentUser?.email}")
+        }
     }
 
     override fun getUserId(): String = authentication.currentUser?.uid ?: ""

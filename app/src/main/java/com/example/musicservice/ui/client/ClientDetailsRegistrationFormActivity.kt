@@ -7,7 +7,7 @@ import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.google.firebase.database.FirebaseDatabase
 import javax.inject.Inject
 
-class ClientDetailsRegistrationFormActivity @Inject constructor(firebaseAuthManager: FirebaseAuthManager) : AppCompatActivity(){
+class ClientDetailsRegistrationFormActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_delegation_client)

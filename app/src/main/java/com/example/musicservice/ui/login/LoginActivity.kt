@@ -25,7 +25,6 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
         setContentView(R.layout.activity_login)
         presenter.setView(this)
         presenter.initLogOut()
-        Timber.i("LOGIN ACTIVITY")
         setAllActivityComponents()
     }
 
@@ -49,10 +48,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
         input_email_registration.error = getString(R.string.email_error)
     }
 
-    override fun onLoginSuccess() {
+    override fun onClientLoginSuccess() {
         startActivity(Intent(this, LoginActivity::class.java))
     }
 
+    override fun onMusicProvderLoginSuccess() {
+        startActivity(Intent(this, LoginActivity::class.java))
+    }
     override fun delegateToRegistrationActivity() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }

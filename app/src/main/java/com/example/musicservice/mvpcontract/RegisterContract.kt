@@ -10,6 +10,8 @@ interface RegisterContract {
         fun showPasswordError()
         fun showUsernameError()
         fun onFailRegistration()
+        fun showProgressBar()
+        fun hideProgressBar()
     }
 
     interface RegisterPresenter {

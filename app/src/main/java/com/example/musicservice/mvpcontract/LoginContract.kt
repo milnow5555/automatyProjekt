@@ -5,7 +5,8 @@ interface LoginContract {
     interface LoginView {
         fun showEmailError()
         fun showPasswordError()
-        fun onLoginSuccess()
+        fun onClientLoginSuccess()
+        fun onMusicProvderLoginSuccess()
         fun delegateToRegistrationActivity()
     }
     interface LoginPresenter {
