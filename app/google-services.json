@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "665650867809",
+    "firebase_url": "https://rynek-muzyczny.firebaseio.com",
+    "project_id": "rynek-muzyczny",
+    "storage_bucket": "rynek-muzyczny.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665650867809:android:e1c116965d8514441b8420",
+        "android_client_info": {
+          "package_name": "com.example.musicmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665650867809-cgkcr698c20kdle3hiiibf7ighamn5gb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musicmarket",
+            "certificate_hash": "abe77abdc3fba5f8ff949c6f1e3658e5f87c5806"
+          }
+        },
+        {
+          "client_id": "665650867809-j7ue07su7cme1m0alo1vp4foa4vhuueq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5aKiGDFrtZspLDvWqq5GzrVTF1G6-HOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665650867809-j7ue07su7cme1m0alo1vp4foa4vhuueq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665650867809:android:8ece9fec8572d7551b8420",
+        "android_client_info": {
+          "package_name": "com.example.musicservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665650867809-08mp9r0vp6ibveh9gmvgqeljant3pf86.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musicservice",
+            "certificate_hash": "abe77abdc3fba5f8ff949c6f1e3658e5f87c5806"
+          }
+        },
+        {
+          "client_id": "665650867809-j7ue07su7cme1m0alo1vp4foa4vhuueq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5aKiGDFrtZspLDvWqq5GzrVTF1G6-HOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665650867809-j7ue07su7cme1m0alo1vp4foa4vhuueq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

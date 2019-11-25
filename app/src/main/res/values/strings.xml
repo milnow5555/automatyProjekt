@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Music Service</string>
+    <string name="password_error">Password must have  at least 8 characters</string>
+    <string name="email_error">Invalid email</string>
+</resources>
