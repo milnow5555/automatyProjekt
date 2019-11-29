@@ -11,5 +11,6 @@ interface ClientPersonalEventListContract {
     }
     interface ClientPersonalEventListPresenter {
         fun getAllPersonalEvents()
+        abstract fun getUsername(): String
     }
 }

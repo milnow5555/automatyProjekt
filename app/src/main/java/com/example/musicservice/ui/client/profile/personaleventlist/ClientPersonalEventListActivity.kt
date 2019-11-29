@@ -21,9 +21,11 @@ class ClientPersonalEventListActivity : AppCompatActivity(), ClientPersonalEvent
         setContentView(R.layout.activity_client_personal_eventlist)
         presenter.setView(this)
         println("RECYCLER VIEW ACTIVITY PERSONAL EVENT LIST")
+        eventlist_usernametext.text = presenter.getUsername()
         floatingActionButton.setOnClickListener{
             startActivity(Intent(this, ClientAddEventActivity::class.java))
         }
+        presenter.getAllPersonalEvents()
     }
 
     override fun initializeRecyclerView(clientsEventList : MutableList<Event?>) {

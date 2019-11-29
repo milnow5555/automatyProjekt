@@ -23,7 +23,8 @@
             android:id="@+id/imageView6"
             android:layout_width="52dp"
             android:layout_height="41dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toStartOf="@+id/addevent_usernametext"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/person" />
@@ -44,7 +45,9 @@
             android:id="@+id/cli_menu_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:textSize="20sp"
             aspect:layout_constraintStart_toEndOf="@+id/imageView6"
             aspect:layout_constraintTop_toTopOf="parent" />
 

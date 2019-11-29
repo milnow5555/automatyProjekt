@@ -25,13 +25,16 @@ class EventDaoImpl  @Inject constructor(private val auth : FirebaseAuthManager, 
                 println("-----------EVENT DAO IMPL FIND ALL EVENTS BY ID ------------- + ${auth.getUserId()}")
                 val listOfEvents : MutableList<Event?> = mutableListOf()
                 for (snap in datasnapshot.children){
-                    if(snap.child("clientId").toString()==auth.getUserId()){
-                        println("------------------ZNALAZLEM EVENT DLA ${auth.getUserId()}")
+                        println("------------------ZNALAZLEM EVENT ${snap.getValue(Event::class.java).toString()}")
                         listOfEvents.add(snap.getValue(Event::class.java))
-                    }
                 }
+                val specificUserEvents =
+                    listOfEvents.filter { event -> event?.ownerId == auth.getUserId() }
+                        .toMutableList()
+
+
                 clientPersonalEventListView.hideProgressBar()
-                clientPersonalEventListView.initializeRecyclerView(listOfEvents)
+                clientPersonalEventListView.initializeRecyclerView(specificUserEvents)
             }
         })
 

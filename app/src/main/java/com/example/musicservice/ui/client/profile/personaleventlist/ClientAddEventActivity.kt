@@ -44,11 +44,11 @@ class ClientAddEventActivity : AppCompatActivity(), ClientAddEventContract.Clien
     }
 
     override fun showProgressBar() {
-        client_details_progressbar.visibility = ProgressBar.VISIBLE
+        addEventProgressBar.visibility = ProgressBar.VISIBLE
     }
 
     override fun hideProgressBar() {
-        client_details_progressbar.visibility = ProgressBar.GONE
+        addEventProgressBar.visibility = ProgressBar.GONE
     }
 
 
