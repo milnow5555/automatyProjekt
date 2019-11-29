@@ -9,6 +9,8 @@ interface LoginContract {
         fun onMusicProviderLoginSuccess()
         fun delegateToRegistrationActivity()
         fun onLoginFailedToast()
+        fun showProgressBar()
+        fun hideProgressBar()
     }
     interface LoginPresenter {
         fun onSignInButtonClicked(email:String, password:String)

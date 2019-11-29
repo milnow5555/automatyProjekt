@@ -39,4 +39,7 @@ class FirebaseAuthManagerImpl @Inject constructor(private val authentication: Fi
 
     override fun logOut() = authentication.signOut()
 
+    override fun getUserEmail() : String = authentication.currentUser?.email ?: ""
+
+
 }

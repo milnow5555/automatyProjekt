@@ -1,21 +1,18 @@
 package com.example.musicservice.ui.login
 
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.musicservice.MusicApp.Companion.component
 import com.example.musicservice.R
 import com.example.musicservice.mvpcontract.LoginContract
 import com.example.musicservice.presenter.LoginPresenter
-import com.example.musicservice.ui.client.ClientDetailsFormActivity
 import com.example.musicservice.ui.client.ClientMainMenuActivity
 import com.example.musicservice.ui.register.RegisterActivity
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_registration.*
-import timber.log.Timber
-import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
 
@@ -57,6 +54,16 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
 /*      todo
         startActivity(getIntentStartingNewActivityStack(MusicPro))
 */
+    }
+
+    override fun showProgressBar() {
+        client_login_progress_bar.visibility = ProgressBar.VISIBLE
+        client_login_progress_bar.forceLayout()
+    }
+
+    override fun hideProgressBar() {
+        client_login_progress_bar.visibility = ProgressBar.GONE
+        client_login_progress_bar.forceLayout()
     }
 
     override fun onClientLoginSuccess() {

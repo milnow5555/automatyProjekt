@@ -24,5 +24,4 @@ abstract class InteractionModule {
     @Binds
     abstract fun musicProviderDao(database: MusicProviderDaoImpl): MusicProviderDao
 
-    //TODO return presenters
 }

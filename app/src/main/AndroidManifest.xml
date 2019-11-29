@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.musicservice">
-
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:name=".MusicApp"
         android:allowBackup="true"
@@ -18,8 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.register.RegisterActivity"></activity>
-        <activity android:name=".ui.client.ClientDetailsFormActivity"></activity>
+        <activity android:name=".ui.client.profile.ClientDetailsFormActivity"></activity>
         <activity android:name=".ui.client.ClientMainMenuActivity"></activity>
+        <activity android:name=".ui.client.profile.ClientPersonalProfileActivity"></activity>
     </application>
 
 </manifest>

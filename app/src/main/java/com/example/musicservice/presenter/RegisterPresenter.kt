@@ -34,13 +34,13 @@ class RegisterPresenter @Inject constructor(private val auth : FirebaseAuthManag
             auth.onAuthStateChangesListener()
             auth.login(email, password).addOnSuccessListener {
                 if(auth.getUserName().isNotEmpty()) {
-                    if(userType == "client") view.onClientRegisterSuccess()
-                    else view.onMusicProviderRegisterSuccess()
-
+                    view.hideProgressBar()
+                    if(userType == "client") view.onClientRegisterSuccess(username)
+                    else view.onMusicProviderRegisterSuccess(username)
                 }
             }
         }
-        view.hideProgressBar()
+
     }
 
     private fun inputIsValid(email: String, password: String, username: String) : Boolean {

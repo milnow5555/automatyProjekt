@@ -1,11 +1,16 @@
 package com.example.musicservice.firebase.dao.client
 
+import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.model.Client
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import javax.inject.Inject
 
-class ClientDaoImpl @Inject constructor(private val auth : FirebaseAuth, private val database : FirebaseDatabase) : ClientDao{
+class ClientDaoImpl @Inject constructor(private val auth : FirebaseAuthManager, private val database : FirebaseDatabase) : ClientDao{
+
+
+    private val databaseClientsReference = database.getReference("/Users")
+
     override fun findByClientCompany(company: String): Client {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -18,12 +23,13 @@ class ClientDaoImpl @Inject constructor(private val auth : FirebaseAuth, private
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun save(t: Client) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun save(client: Client) {
+        println("CLIENT DAO SAVE -------------------------------------------------------")
+        databaseClientsReference.child("/${auth.getUserId()}").setValue(client)
     }
 
-    override fun getById(id: Int): Client {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getByCurrentUserId(): DatabaseReference {
+        return databaseClientsReference.child("/${auth.getUserId()}")
     }
 
     override fun getByName(name: String): Client {

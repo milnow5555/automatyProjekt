@@ -4,8 +4,8 @@ package com.example.musicservice.mvpcontract
 interface RegisterContract {
 
     interface RegisterView {
-        fun onClientRegisterSuccess()
-        fun onMusicProviderRegisterSuccess()
+        fun onClientRegisterSuccess(username:String)
+        fun onMusicProviderRegisterSuccess(username:String)
         fun onDelegateToLogin()
         fun showEmailError()
         fun showPasswordError()

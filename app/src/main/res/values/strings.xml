@@ -4,4 +4,6 @@
     <string name="email_error">Invalid email</string>
     <string name="username_error">Username must consist of at least 3 characters</string>
     <string name="registration_failed">Registration Failed!"</string>
+
+
 </resources>

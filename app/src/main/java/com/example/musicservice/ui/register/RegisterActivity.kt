@@ -10,13 +10,14 @@ import com.example.musicservice.R
 import com.example.musicservice.ui.login.LoginActivity
 import com.example.musicservice.mvpcontract.RegisterContract
 import com.example.musicservice.presenter.RegisterPresenter
-import com.example.musicservice.ui.client.ClientDetailsFormActivity
+import com.example.musicservice.ui.client.profile.ClientDetailsFormActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegisterActivity : AppCompatActivity(), RegisterContract.RegisterView{
 
 
     private val presenter : RegisterPresenter = component.registerPresenter()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,19 +48,20 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.RegisterView{
         input_username_registration.requestFocus()
     }
 
-    override fun onClientRegisterSuccess() {
-        startActivity(getIntentStartingNewActivityStack(ClientDetailsFormActivity::class.java))
+    override fun onClientRegisterSuccess(username : String) {
+        startActivity(getIntentStartingNewActivityStack(ClientDetailsFormActivity::class.java, username))
     }
 
-    override fun onMusicProviderRegisterSuccess() {
+    override fun onMusicProviderRegisterSuccess(username : String) {
 /*      todo
         startActivity(getIntentStartingNewActivityStack(ClientDetailsFormActivity::class.java))
 */
     }
 
-    private fun <T> getIntentStartingNewActivityStack(classType : Class<T>) : Intent{
+    private fun <T> getIntentStartingNewActivityStack(classType : Class<T>, username: String) : Intent{
         var intent = Intent(this, classType)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("user_name",username)
         return intent
     }
 
@@ -75,10 +77,10 @@ class RegisterActivity : AppCompatActivity(), RegisterContract.RegisterView{
     override fun onDelegateToLogin() = startActivity(Intent(this, LoginActivity::class.java))
     override fun onFailRegistration() = Toast.makeText(this,R.string.registration_failed,Toast.LENGTH_SHORT).show()
     override fun showProgressBar() {
-        progress_bar_registration.visibility = View.VISIBLE
+        client_registration_progress_bar.visibility = View.VISIBLE
     }
     override fun hideProgressBar() {
-        progress_bar_registration.visibility = View.GONE
+        client_registration_progress_bar.visibility = View.INVISIBLE
     }
 
 }

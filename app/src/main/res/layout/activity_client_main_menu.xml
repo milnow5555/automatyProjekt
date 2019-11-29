@@ -1,7 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:aspect="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg2">
+    tools:context=".ui.client.ClientMainMenuActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background">
 
-</LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="349dp"
+            android:layout_height="197dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/notes"
+            aspect:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="32dp"
+            android:text="Logged as"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nametext2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:text=""
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="325dp"
+        android:layout_height="467dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        aspect:layout_constraintBottom_toBottomOf="parent"
+        aspect:layout_constraintEnd_toEndOf="parent"
+        aspect:layout_constraintStart_toStartOf="parent"
+        aspect:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+
+        <Button
+            android:id="@+id/activity_client_main_menu_mplist_button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="156dp"
+            android:background="@drawable/buttons"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Log out"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            aspect:layout_constraintBottom_toBottomOf="parent"
+            aspect:layout_constraintEnd_toEndOf="parent"
+            aspect:layout_constraintHorizontal_bias="0.0"
+            aspect:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/activity_client_main_menu_mplist_button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/buttons"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Events"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            aspect:layout_constraintBottom_toTopOf="@+id/activity_client_main_menu_mplist_button"
+            aspect:layout_constraintEnd_toEndOf="parent"
+            aspect:layout_constraintHorizontal_bias="0.5"
+            aspect:layout_constraintStart_toStartOf="parent"
+            aspect:layout_constraintTop_toBottomOf="@+id/activity_client_main_menu_mplist_button4"
+            aspect:layout_constraintVertical_chainStyle="packed" />
+
+        <Button
+            android:id="@+id/activity_client_main_menu_mplist_button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/buttons"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Music Providers"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            aspect:layout_constraintBottom_toTopOf="@+id/activity_client_main_menu_mplist_button3"
+            aspect:layout_constraintEnd_toEndOf="parent"
+            aspect:layout_constraintHorizontal_bias="0.5"
+            aspect:layout_constraintStart_toStartOf="parent"
+            aspect:layout_constraintTop_toTopOf="parent"
+            aspect:layout_constraintVertical_chainStyle="packed" />
+
+        <Button
+            android:id="@+id/activity_client_main_menu_mplist_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/buttons"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Personal Details"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            aspect:layout_constraintBottom_toTopOf="@+id/activity_client_main_menu_mplist_button2"
+            aspect:layout_constraintEnd_toEndOf="parent"
+            aspect:layout_constraintHorizontal_bias="0.5"
+            aspect:layout_constraintStart_toStartOf="parent"
+            aspect:layout_constraintTop_toBottomOf="@+id/activity_client_main_menu_mplist_button3"
+            aspect:layout_constraintVertical_chainStyle="packed" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

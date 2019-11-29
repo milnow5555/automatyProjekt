@@ -10,4 +10,5 @@ interface FirebaseAuthManager {
     fun getUserName(): String
     fun logOut()
     fun onAuthStateChangesListener()
+    fun getUserEmail() : String
 }
