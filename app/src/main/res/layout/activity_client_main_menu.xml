@@ -20,6 +20,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="52dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/addevent_usernametext"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/person" />
+        <ImageView
             android:id="@+id/imageView4"
             android:layout_width="349dp"
             android:layout_height="197dp"
@@ -33,23 +41,13 @@
             aspect:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/cli_menu_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="32dp"
-            android:text="Logged as"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="16dp"
+            aspect:layout_constraintStart_toEndOf="@+id/imageView6"
+            aspect:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/nametext2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:text=""
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

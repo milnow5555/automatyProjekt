@@ -4,6 +4,7 @@ import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.model.Event
 import com.example.musicservice.mvpcontract.client.ClientPersonalEventListContract
 import com.google.firebase.database.*
+import java.util.concurrent.CompletableFuture
 import javax.inject.Inject
 
 class EventDaoImpl  @Inject constructor(private val auth : FirebaseAuthManager, private val database : FirebaseDatabase)  : EventDao {
@@ -44,7 +45,11 @@ class EventDaoImpl  @Inject constructor(private val auth : FirebaseAuthManager, 
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun save(t: Event) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun save(savable : Event) {
+        println("EVENT DAO SAVE -------------------------------------------------------")
+
+        val key = databaseEventsReference.push().key
+        println("EVENT DAO KEY ---------------------------- ${key}")
+        databaseEventsReference.child("/${key}").setValue(savable)
     }
 }

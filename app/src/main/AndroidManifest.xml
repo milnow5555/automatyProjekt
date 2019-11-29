@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.musicservice">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:name=".MusicApp"
         android:allowBackup="true"
@@ -22,6 +22,7 @@
         <activity android:name=".ui.client.ClientMainMenuActivity"></activity>
         <activity android:name=".ui.client.profile.ClientPersonalProfileActivity"></activity>
         <activity android:name=".ui.client.profile.personaleventlist.ClientPersonalEventListActivity"></activity>
+        <activity android:name=".ui.client.profile.personaleventlist.ClientAddEventActivity"></activity>
     </application>
 
 </manifest>

@@ -3,21 +3,13 @@ package com.example.musicservice.ui.client.profile
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.musicservice.MusicApp
 import com.example.musicservice.MusicApp.Companion.component
 import com.example.musicservice.R
-import com.example.musicservice.firebase.auth.FirebaseAuthManager
-import com.example.musicservice.firebase.dao.client.ClientDao
-import com.example.musicservice.firebase.dao.client.ClientDaoImpl
-import com.example.musicservice.firebase.dao.musicprovider.MusicProviderDao
 import com.example.musicservice.model.Client
 import com.example.musicservice.mvpcontract.client.ClientDetailsFormContract
 import com.example.musicservice.presenter.client.ClientDetailsFormPresenter
 import com.example.musicservice.ui.client.ClientMainMenuActivity
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_client_details_form.*
-import javax.inject.Inject
-import com.example.musicservice.MusicApp.Companion as MusicApp1
 
 class ClientDetailsFormActivity  : AppCompatActivity(), ClientDetailsFormContract.ClientDetailsFormView{
 
@@ -33,8 +25,8 @@ class ClientDetailsFormActivity  : AppCompatActivity(), ClientDetailsFormContrac
 
         nametext.text = presenter.returnUserName()
         client_details_button.setOnClickListener{
-            client = Client(name = client_details_name.text.toString(), surname = client_details_surname.text.toString(),
-                company = client_details_company.text.toString(), description = client_detalis_desc.text.toString(), phone = client_details_phone.text.toString())
+            client = Client(name = client_addevent_name.text.toString(), surname = client_addevent_date.text.toString(),
+                company = client_addevent_type.text.toString(), description = client_addevent_reward.text.toString(), phone = client_addevent_desc.text.toString())
 
             presenter.handleForm(client)
         }

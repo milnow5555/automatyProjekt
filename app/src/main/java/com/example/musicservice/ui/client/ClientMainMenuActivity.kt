@@ -23,7 +23,7 @@ class ClientMainMenuActivity : AppCompatActivity(), ClientMainMenuContract.Clien
         setContentView(R.layout.activity_client_main_menu)
         presenter.setView(this)
         presenter.exampleMethod()
-        nametext2.text = presenter.returnUserName()
+        cli_menu_username.text = presenter.returnUserName()
 
         initAll()
     }

@@ -1,12 +1,12 @@
 package com.example.musicservice.model
 
 import java.time.LocalDate
-
+//Todo sending events to specific music providers
 data class Event(
-                 val eventName : String = "",
-                 val date : LocalDate = LocalDate.now(),
-                 val providerTypeToSendNotification : MusicProvider.MusicPoviderType = MusicProvider.MusicPoviderType.Musician,
-                 val listOfSignedPrividers : List<MusicProvider> = listOf(),
-                 val ownerId : String = "",
-                 val reward : String = "",
-                 val eventType : String = "")
+                 var eventName : String = "",
+                 var date : String = "",
+                 var listOfSignedPrividers : List<MusicProvider> = listOf(),
+                 var description : String = "",
+                 var ownerId : String = "",
+                 var reward : String = "",
+                 var eventType : String = "")

@@ -7,5 +7,5 @@ interface FirebaseDao<T> {
     fun getAll() : List<T>
     fun getByCurrentUserId() : DatabaseReference
     fun getByName(name : String) : T
-    fun save(t : T)
+    fun save(savable : T)
 }

@@ -6,6 +6,7 @@ data class MusicProvider(val name : String = "",
                          val description : String = "",
                          val rating : Double = 0.0,
                          val musicProvidersApproachingEvents : List<Event> = listOf(),
+                         val musicProvidersInvitations : List<Event> = listOf(),
                          val musicProviderType : MusicPoviderType = MusicPoviderType.Musician,
                          val musicalPreferences: MusicProviderMusicalPreferences = MusicProviderMusicalPreferences.Jazz) {
 

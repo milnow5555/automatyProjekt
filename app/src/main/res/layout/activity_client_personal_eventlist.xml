@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,8 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
-        android:layout_width="416dp"
-        android:layout_height="146dp"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
         android:background="@drawable/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +19,7 @@
             android:id="@+id/client_event_list_circleimage"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="34dp"
             android:src="@mipmap/ic_launcher"
@@ -45,7 +44,7 @@
             android:id="@+id/myeventstext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="60dp"
             android:layout_marginBottom="16dp"
             android:text="My Events"
             android:textSize="@android:dimen/app_icon_size"
@@ -59,7 +58,6 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="40dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Afefefefef"
             android:textSize="32sp"
             app:layout_constraintStart_toEndOf="@+id/client_event_list_circleimage"
             app:layout_constraintTop_toTopOf="parent" />
@@ -68,16 +66,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/client_personal_events_constraintlayoutwithrecyclerview"
         android:layout_width="match_parent"
-        android:layout_height="556dp"
+        android:layout_height="566dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/client_personal_events_recyclerview"
@@ -87,11 +83,25 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toStartOf="parent" />
 
-
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:textAlignment="center"
+            app:backgroundTint="@android:color/transparent"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/floatt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
