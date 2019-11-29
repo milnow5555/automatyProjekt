@@ -29,16 +29,12 @@ class ClientPersonalProfilePresenter  @Inject constructor(private val auth : Fir
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if(dataSnapshot.exists()) {
                     client = dataSnapshot.getValue(Client::class.java)
-                    println("ASYNC KURWO----------------------------- ${client}")
                     view.hideProgressBar()
                     view.setClientPersonalProfileData(client)
                 }
             }
         })
-
-
     }
-
 
     override fun myEvents() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

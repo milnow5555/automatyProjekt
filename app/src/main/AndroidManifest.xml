@@ -21,6 +21,7 @@
         <activity android:name=".ui.client.profile.ClientDetailsFormActivity"></activity>
         <activity android:name=".ui.client.ClientMainMenuActivity"></activity>
         <activity android:name=".ui.client.profile.ClientPersonalProfileActivity"></activity>
+        <activity android:name=".ui.client.profile.personaleventlist.ClientPersonalEventListActivity"></activity>
     </application>
 
 </manifest>

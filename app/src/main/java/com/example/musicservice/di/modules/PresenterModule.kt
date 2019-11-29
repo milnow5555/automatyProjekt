@@ -26,8 +26,9 @@ abstract class PresenterModule {
     abstract fun clienDetailsFormPresenter(clientDetailsFormPresenter: ClientDetailsFormPresenter) : ClientDetailsFormContract.ClientDetailsFormPresenter
     @Binds
     abstract fun clientMainMenuPresenter(clientMainMenuPresenter: ClientMainMenuPresenter) : ClientMainMenuContract.ClientMainMenuPresenter
-
+    @Binds
     abstract fun clientPersonalProfilePresenter(clientPersonalProfilePresenter : ClientPersonalProfilePresenter) : ClientPersonalProfileContract.ClientPersonalProfilePresenter
+
 
 
 }

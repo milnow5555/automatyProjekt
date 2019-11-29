@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/client_personal_events_parent_relativelayout">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:id="@+id/client_personal_events_circleimageview"
+        android:id="@+id/client_event_list_circleimage"
         android:src="@mipmap/ic_launcher">
     </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -14,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Canada"
-        android:layout_toRightOf="@+id/client_personal_events_circleimageview"
+        android:layout_toRightOf="@+id/client_event_list_circleimage"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
         android:textSize="17sp"/>

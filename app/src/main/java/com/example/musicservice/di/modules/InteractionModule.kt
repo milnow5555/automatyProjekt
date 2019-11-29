@@ -5,6 +5,8 @@ import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.firebase.auth.FirebaseAuthManagerImpl
 import com.example.musicservice.firebase.dao.client.ClientDao
 import com.example.musicservice.firebase.dao.client.ClientDaoImpl
+import com.example.musicservice.firebase.dao.event.EventDao
+import com.example.musicservice.firebase.dao.event.EventDaoImpl
 import com.example.musicservice.firebase.dao.musicprovider.MusicProviderDao
 import com.example.musicservice.firebase.dao.musicprovider.MusicProviderDaoImpl
 import dagger.Binds
@@ -24,4 +26,6 @@ abstract class InteractionModule {
     @Binds
     abstract fun musicProviderDao(database: MusicProviderDaoImpl): MusicProviderDao
 
+    @Binds
+    abstract fun eventDao(database: EventDaoImpl) : EventDao
 }
