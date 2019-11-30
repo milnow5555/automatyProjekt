@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicservice.R
+import com.example.musicservice.model.Client
 import com.example.musicservice.model.Event
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.layout_listitem_client_personalevents.view.*
 
 
 
-class ClientPersonalEventListRecyclerViewAdapter(private val eventNames: MutableList<Event?>, private val images : MutableList<String>, private val context : Context)
+class ClientPersonalEventListRecyclerViewAdapter(private val clientUsernameToPersonalEventsMap: MutableMap<String, MutableList<Event?>>, private val images : MutableList<String>, private val context : Context)
     : RecyclerView.Adapter<ClientPersonalEventListRecyclerViewAdapter.ClientPersonalEventsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPersonalEventsViewHolder {
@@ -26,27 +28,40 @@ class ClientPersonalEventListRecyclerViewAdapter(private val eventNames: Mutable
 
     override fun getItemCount(): Int {
         println("ADAPTER GET ITEM COUNT")
-        return eventNames.size
+        return clientUsernameToPersonalEventsMap.values.toMutableList()[0].size
     }
 
     override fun onBindViewHolder(holder: ClientPersonalEventsViewHolder, position: Int) {
         println("ADAPTER ON BIND VIEW HOLDER")
-        holder.textViewEvent.text = eventNames[position]?.eventName
-        holder.myRelativeLayout.setOnClickListener{
-            Toast.makeText(context, "Position : ${eventNames[position]}", Toast.LENGTH_SHORT)
+        val findAny = clientUsernameToPersonalEventsMap.keys.find { true }
+        println("FIND ANY CLIENT---------- ${findAny}")
+        val mutableEventList = clientUsernameToPersonalEventsMap.values.toMutableList()[0]
+
+
+        holder.textViewEvent.text = mutableEventList[position]?.eventName
+        holder.ownerUsername.text = findAny
+        holder.eventDate.text = mutableEventList[position]?.date
+
+
+        holder.constraintLayout.setOnClickListener{
+            Toast.makeText(context, "Position : ${mutableEventList[position]}", Toast.LENGTH_SHORT)
         }
 
     }
 
     class ClientPersonalEventsViewHolder(private val myItemView : View) : RecyclerView.ViewHolder(myItemView){
-        val myRelativeLayout : RelativeLayout
+        val constraintLayout : ConstraintLayout
         val textViewEvent : TextView
+        val ownerUsername : TextView
+        val eventDate : TextView
         val circleImageView : CircleImageView
 
         init {
-            myRelativeLayout =  myItemView.client_personal_events_parent_relativelayout
+            constraintLayout =  myItemView.client_personal_events_parent_relativelayout
             textViewEvent = myItemView.client_personal_events_eventnametextview
             circleImageView = myItemView.client_event_list_circleimage
+            ownerUsername = myItemView.event_holder_ownerusername
+            eventDate = myItemView.personal_event_dat
         }
     }
 }

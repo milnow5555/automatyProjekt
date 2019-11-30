@@ -1,6 +1,5 @@
 package com.example.musicservice.model
 
-import java.time.LocalDate
 //Todo sending events to specific music providers
 data class Event(
                  var eventName : String = "",

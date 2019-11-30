@@ -2,16 +2,10 @@ package com.example.musicservice.di.modules
 
 import com.example.musicservice.mvpcontract.LoginContract
 import com.example.musicservice.mvpcontract.RegisterContract
-import com.example.musicservice.mvpcontract.client.ClientAddEventContract
-import com.example.musicservice.mvpcontract.client.ClientDetailsFormContract
-import com.example.musicservice.mvpcontract.client.ClientMainMenuContract
-import com.example.musicservice.mvpcontract.client.ClientPersonalProfileContract
+import com.example.musicservice.mvpcontract.client.*
 import com.example.musicservice.presenter.LoginPresenter
 import com.example.musicservice.presenter.RegisterPresenter
-import com.example.musicservice.presenter.client.ClientAddEventPresenter
-import com.example.musicservice.presenter.client.ClientDetailsFormPresenter
-import com.example.musicservice.presenter.client.ClientMainMenuPresenter
-import com.example.musicservice.presenter.client.ClientPersonalProfilePresenter
+import com.example.musicservice.presenter.client.*
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -32,4 +26,6 @@ abstract class PresenterModule {
     abstract fun clientPersonalProfilePresenter(clientPersonalProfilePresenter : ClientPersonalProfilePresenter) : ClientPersonalProfileContract.ClientPersonalProfilePresenter
     @Binds
     abstract fun clientAddEventPresenter(clientAddEventPresenter: ClientAddEventPresenter) : ClientAddEventContract.ClientAddEventPresenter
+    @Binds
+    abstract fun clientEventDetailsPresenter(clientPersonaleEventDetailsPresenter : ClientPersonalEventDetailsPresenter ) : ClientPersonalEventDetailsContract.ClientPersonalEventDetailsPresenter
 }

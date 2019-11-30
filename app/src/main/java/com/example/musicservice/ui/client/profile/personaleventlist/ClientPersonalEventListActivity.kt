@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicservice.MusicApp
 import com.example.musicservice.R
+import com.example.musicservice.model.Client
 import com.example.musicservice.model.Event
 import com.example.musicservice.mvpcontract.client.ClientPersonalEventListContract
 import com.example.musicservice.presenter.client.ClientPersonalEventListPresenter
@@ -28,8 +29,10 @@ class ClientPersonalEventListActivity : AppCompatActivity(), ClientPersonalEvent
         presenter.getAllPersonalEvents()
     }
 
-    override fun initializeRecyclerView(clientsEventList : MutableList<Event?>) {
+    override fun initializeRecyclerView(clientsEventList : MutableMap<String, MutableList<Event?>>) {
         println("RECYCLER VIEW INITIALIZATION")
+
+
         var clientPersonalEventListRecyclerViewAdapter : ClientPersonalEventListRecyclerViewAdapter =
             ClientPersonalEventListRecyclerViewAdapter(clientsEventList, mutableListOf(), this)
         client_personal_events_recyclerview.adapter = clientPersonalEventListRecyclerViewAdapter

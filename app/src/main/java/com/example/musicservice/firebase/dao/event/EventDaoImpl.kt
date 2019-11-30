@@ -4,6 +4,7 @@ import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.model.Event
 import com.example.musicservice.mvpcontract.client.ClientPersonalEventListContract
 import com.google.firebase.database.*
+import java.util.LinkedHashMap
 import java.util.concurrent.CompletableFuture
 import javax.inject.Inject
 
@@ -31,13 +32,13 @@ class EventDaoImpl  @Inject constructor(private val auth : FirebaseAuthManager, 
                 val specificUserEvents =
                     listOfEvents.filter { event -> event?.ownerId == auth.getUserId() }
                         .toMutableList()
-
+                val linkedMapOf: LinkedHashMap<String, MutableList<Event?>> =
+                    linkedMapOf(auth.getUserName() to specificUserEvents)
 
                 clientPersonalEventListView.hideProgressBar()
-                clientPersonalEventListView.initializeRecyclerView(specificUserEvents)
+                clientPersonalEventListView.initializeRecyclerView(linkedMapOf)
             }
         })
-
     }
 
     override fun getByCurrentUserId(): DatabaseReference {
