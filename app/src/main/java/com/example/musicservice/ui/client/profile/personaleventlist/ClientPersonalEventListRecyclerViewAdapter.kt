@@ -17,13 +17,18 @@ import kotlinx.android.synthetic.main.layout_listitem_client_personalevents.view
 
 
 
-class ClientPersonalEventListRecyclerViewAdapter(private val clientUsernameToPersonalEventsMap: MutableMap<String, MutableList<Event?>>, private val images : MutableList<String>, private val context : Context)
+class ClientPersonalEventListRecyclerViewAdapter(private val itemClickAction: (view: View, position: Int, type: String?) -> Unit ,
+                                                 private val clientUsernameToPersonalEventsMap: MutableMap<String, MutableList<Event?>>,
+                                                 private val images : MutableList<String>,
+                                                 private val context : Context)
     : RecyclerView.Adapter<ClientPersonalEventListRecyclerViewAdapter.ClientPersonalEventsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPersonalEventsViewHolder {
         println("ADAPTER ON CREATE VIEW HOLDER")
         val view : View = LayoutInflater.from(parent.context).inflate(R.layout.layout_listitem_client_personalevents,parent, false)
-        return ClientPersonalEventsViewHolder(view)
+        val viewHolder : ClientPersonalEventsViewHolder = ClientPersonalEventsViewHolder(view)
+        viewHolder.onClick(itemClickAction)
+        return viewHolder
     }
 
     override fun getItemCount(): Int {
@@ -41,20 +46,26 @@ class ClientPersonalEventListRecyclerViewAdapter(private val clientUsernameToPer
         holder.textViewEvent.text = mutableEventList[position]?.eventName
         holder.ownerUsername.text = findAny
         holder.eventDate.text = mutableEventList[position]?.date
-
-
-        holder.constraintLayout.setOnClickListener{
-            Toast.makeText(context, "Position : ${mutableEventList[position]}", Toast.LENGTH_SHORT)
-        }
+        holder.eventId = mutableEventList[position]?.eventId
 
     }
+    fun <T : ClientPersonalEventsViewHolder> T.onClick(event: (view: View, position: Int, type: String?) -> Unit): T {
+        //TODO why not myItemView
+        itemView.setOnClickListener {
+            event.invoke(it, getAdapterPosition(), eventId)
+        }
+        return this
+    }
 
-    class ClientPersonalEventsViewHolder(private val myItemView : View) : RecyclerView.ViewHolder(myItemView){
+
+    class ClientPersonalEventsViewHolder(private val myItemView : View ) : RecyclerView.ViewHolder(myItemView){
+
         val constraintLayout : ConstraintLayout
         val textViewEvent : TextView
         val ownerUsername : TextView
         val eventDate : TextView
         val circleImageView : CircleImageView
+        var eventId : String?
 
         init {
             constraintLayout =  myItemView.client_personal_events_parent_relativelayout
@@ -62,6 +73,7 @@ class ClientPersonalEventListRecyclerViewAdapter(private val clientUsernameToPer
             circleImageView = myItemView.client_event_list_circleimage
             ownerUsername = myItemView.event_holder_ownerusername
             eventDate = myItemView.personal_event_dat
+            eventId = "Error!----------------------------------------------------EVENT ID IN VIEW HOLDER NOT INITIALIZED"
         }
     }
 }

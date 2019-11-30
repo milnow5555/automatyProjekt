@@ -206,7 +206,7 @@
                 android:src="@drawable/web_hi_res_512" />
 
             <TextView
-                android:id="@+id/client_profile_phone"
+                android:id="@+id/now_event_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

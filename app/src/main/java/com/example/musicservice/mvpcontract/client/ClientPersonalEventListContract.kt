@@ -9,6 +9,7 @@ interface ClientPersonalEventListContract {
         fun initializeRecyclerView(clietnsToEventsMap : MutableMap<String, MutableList<Event?>>)
         fun hideProgressBar()
         fun showProgressBar()
+        fun onItemClickedInRecyclerView(eventId : String?)
     }
     interface ClientPersonalEventListPresenter {
         fun getAllPersonalEvents()

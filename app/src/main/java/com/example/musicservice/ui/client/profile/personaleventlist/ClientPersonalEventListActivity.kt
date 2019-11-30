@@ -2,6 +2,7 @@ package com.example.musicservice.ui.client.profile.personaleventlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,12 +33,24 @@ class ClientPersonalEventListActivity : AppCompatActivity(), ClientPersonalEvent
     override fun initializeRecyclerView(clientsEventList : MutableMap<String, MutableList<Event?>>) {
         println("RECYCLER VIEW INITIALIZATION")
 
+        val itemOnClick: (View, Int, String?) -> Unit = { view, position, eventId ->
+            onItemClickedInRecyclerView(eventId)
+        }
 
         var clientPersonalEventListRecyclerViewAdapter : ClientPersonalEventListRecyclerViewAdapter =
-            ClientPersonalEventListRecyclerViewAdapter(clientsEventList, mutableListOf(), this)
+            ClientPersonalEventListRecyclerViewAdapter(itemOnClick, clientsEventList, mutableListOf(), this)
+
         client_personal_events_recyclerview.adapter = clientPersonalEventListRecyclerViewAdapter
         client_personal_events_recyclerview.layoutManager = LinearLayoutManager(this)
     }
+
+    override fun onItemClickedInRecyclerView(eventId : String?) {
+        println("======================================CLICKED AND REACTED========================================== EVENT: ${eventId}")
+        var intent : Intent = Intent(this, ClientPersonalEventDetailsActivity::class.java)
+        intent.putExtra("eventid", eventId)
+        startActivity(intent)
+    }
+
 
 
     override fun showProgressBar() {

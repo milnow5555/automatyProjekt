@@ -14,8 +14,7 @@ class ClientPersonalEventListPresenter @Inject constructor(private val auth : Fi
 
     private lateinit var personalEventListView : ClientPersonalEventListContract.ClientPersonalEventListView
 
-    private var eventNames : MutableList<String> = mutableListOf()
-    private var imageUrls : MutableList<String> = mutableListOf()
+
 
     override fun setView(view: ClientPersonalEventListContract.ClientPersonalEventListView) {
         personalEventListView = view

@@ -46,7 +46,7 @@
                     android:src="@drawable/web_hi_res_512" />
 
                 <TextView
-                    android:id="@+id/client_profile_username"
+                    android:id="@+id/now_eventtype"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -74,7 +74,7 @@
                     android:src="@drawable/web_hi_res_512" />
 
                 <TextView
-                    android:id="@+id/client_profile_email"
+                    android:id="@+id/now_eventreward"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -84,16 +84,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/now_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <ImageView
@@ -102,7 +103,7 @@
                     android:src="@drawable/web_hi_res_512" />
 
                 <TextView
-                    android:id="@+id/client_profile_phone"
+                    android:id="@+id/now_event_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -115,11 +116,12 @@
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                 app:layout_constraintVertical_chainStyle="packed">
@@ -130,7 +132,7 @@
                     android:src="@drawable/web_hi_res_512" />
 
                 <TextView
-                    android:id="@+id/client_profile_company"
+                    android:id="@+id/now_event_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -150,6 +152,15 @@
             app:layout_constraintTop_toBottomOf="@+id/zawiera"
             app:layout_constraintVertical_weight="2">
 
+            <ProgressBar
+                android:id="@+id/now_progressbar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="10dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -255,16 +266,14 @@
                     app:layout_constraintVertical_bias="0.364" />
 
                 <TextView
-                    android:id="@+id/now_event_owneer"
+                    android:id="@+id/now_event_owner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="TextView"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/now_event_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/now_event_name"
+                    tools:layout_editor_absoluteX="45dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

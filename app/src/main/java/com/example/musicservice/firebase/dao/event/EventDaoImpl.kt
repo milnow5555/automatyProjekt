@@ -9,6 +9,8 @@ import java.util.concurrent.CompletableFuture
 import javax.inject.Inject
 
 class EventDaoImpl  @Inject constructor(private val auth : FirebaseAuthManager, private val database : FirebaseDatabase)  : EventDao {
+
+
     private val databaseEventsReference = database.getReference("/Events")
 
     override fun getAll(): List<Event> {
@@ -49,11 +51,14 @@ class EventDaoImpl  @Inject constructor(private val auth : FirebaseAuthManager, 
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun getById(eventId : String) = databaseEventsReference.child("/${eventId}")
+
     override fun save(savable : Event) {
         println("EVENT DAO SAVE -------------------------------------------------------")
 
         val key = databaseEventsReference.push().key
         println("EVENT DAO KEY ---------------------------- ${key}")
+        savable.eventId = key
         databaseEventsReference.child("/${key}").setValue(savable)
     }
 }

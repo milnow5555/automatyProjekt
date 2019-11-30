@@ -23,6 +23,7 @@
         <activity android:name=".ui.client.profile.ClientPersonalProfileActivity"></activity>
         <activity android:name=".ui.client.profile.personaleventlist.ClientPersonalEventListActivity"></activity>
         <activity android:name=".ui.client.profile.personaleventlist.ClientAddEventActivity"></activity>
+        <activity android:name=".ui.client.profile.personaleventlist.ClientPersonalEventDetailsActivity"></activity>
     </application>
 
 </manifest>

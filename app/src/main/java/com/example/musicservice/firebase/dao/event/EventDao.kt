@@ -7,5 +7,5 @@ import com.google.firebase.database.DatabaseReference
 
 interface EventDao : FirebaseDao<Event>{
     fun getAllEventsByClientId(clientId : String,clientPersonalEventListView: ClientPersonalEventListContract.ClientPersonalEventListView)
-
+    fun getById(eventId : String) : DatabaseReference
 }
