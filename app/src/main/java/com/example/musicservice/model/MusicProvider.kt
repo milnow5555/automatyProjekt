@@ -1,6 +1,7 @@
 package com.example.musicservice.model
 
-data class MusicProvider(val name : String = "",
+data class MusicProvider(var id : String = "",
+                         val name : String = "",
                          val active : Boolean = true,
                          val city : String = "",
                          val description : String = "",
