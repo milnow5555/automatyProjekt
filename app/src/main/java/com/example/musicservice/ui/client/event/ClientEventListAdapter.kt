@@ -1,12 +1,10 @@
-package com.example.musicservice.ui.client.profile.personaleventlist
+package com.example.musicservice.ui.client.event
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicservice.R
@@ -15,37 +13,38 @@ import com.example.musicservice.model.Event
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.layout_listitem_client_personalevents.view.*
 
+class ClientEventListAdapter(private val itemClickAction: (view: View, position: Int, type: String?) -> Unit,
+                             private val clientUsernameToPersonalEventsMap: MutableMap<Client?, MutableList<Event?>>,
+                             private val images : MutableList<String>,
+                             private val context : Context
+)
+    : RecyclerView.Adapter<ClientEventListAdapter.ClientEventListViewHolder>() {
 
-
-class ClientPersonalEventListRecyclerViewAdapter(private val itemClickAction: (view: View, position: Int, type: String?) -> Unit ,
-                                                 private val clientUsernameToPersonalEventsMap: MutableMap<String, MutableList<Event?>>,
-                                                 private val images : MutableList<String>,
-                                                 private val context : Context)
-    : RecyclerView.Adapter<ClientPersonalEventListRecyclerViewAdapter.ClientPersonalEventsViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPersonalEventsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientEventListViewHolder {
         val view : View = LayoutInflater.from(parent.context).inflate(R.layout.layout_listitem_client_personalevents,parent, false)
-        val viewHolder : ClientPersonalEventsViewHolder = ClientPersonalEventsViewHolder(view)
+        val viewHolder : ClientEventListViewHolder = ClientEventListViewHolder(view)
         viewHolder.onClick(itemClickAction)
         return viewHolder
     }
 
     override fun getItemCount(): Int {
-        return clientUsernameToPersonalEventsMap.values.toMutableList()[0].size
+        return clientUsernameToPersonalEventsMap.values.flatten().size
     }
 
-    override fun onBindViewHolder(holder: ClientPersonalEventsViewHolder, position: Int) {
-        val findAny = clientUsernameToPersonalEventsMap.keys.find { true }
-        val mutableEventList = clientUsernameToPersonalEventsMap.values.toMutableList()[0]
+    override fun onBindViewHolder(holder: ClientEventListViewHolder, position: Int) {
+        val mutableEventList = clientUsernameToPersonalEventsMap.values.flatten()
 
-
+        //TODO Send map of clients
+        val client =
+            clientUsernameToPersonalEventsMap.keys.filter { clientObject -> clientObject?.id == mutableEventList[position]?.ownerId }
+        //TODO client id in client
         holder.textViewEvent.text = mutableEventList[position]?.eventName
-        holder.ownerUsername.text = findAny
+        holder.ownerUsername.text = client[0]?.name
         holder.eventDate.text = mutableEventList[position]?.date
         holder.eventId = mutableEventList[position]?.eventId
 
     }
-    fun <T : ClientPersonalEventsViewHolder> T.onClick(event: (view: View, position: Int, type: String?) -> Unit): T {
+    fun <T : ClientEventListViewHolder> T.onClick(event: (view: View, position: Int, type: String?) -> Unit): T {
         //TODO why not myItemView
         itemView.setOnClickListener {
             event.invoke(it, getAdapterPosition(), eventId)
@@ -54,7 +53,7 @@ class ClientPersonalEventListRecyclerViewAdapter(private val itemClickAction: (v
     }
 
 
-    class ClientPersonalEventsViewHolder(private val myItemView : View ) : RecyclerView.ViewHolder(myItemView){
+    class ClientEventListViewHolder(private val myItemView : View) : RecyclerView.ViewHolder(myItemView){
 
         val constraintLayout : ConstraintLayout
         val textViewEvent : TextView

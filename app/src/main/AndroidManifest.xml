@@ -24,6 +24,8 @@
         <activity android:name=".ui.client.profile.personaleventlist.ClientPersonalEventListActivity"></activity>
         <activity android:name=".ui.client.profile.personaleventlist.ClientAddEventActivity"></activity>
         <activity android:name=".ui.client.profile.personaleventlist.ClientPersonalEventDetailsActivity"></activity>
+        <activity android:name=".ui.client.profile.ClientPersonalProfileEditActivity"></activity>
+        <activity android:name=".ui.client.event.ClientEventListActivity"></activity>
     </application>
 
 </manifest>

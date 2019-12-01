@@ -15,6 +15,9 @@ import javax.inject.Inject
 
 class ClientPersonalEventDetailsPresenter @Inject constructor(private val auth : FirebaseAuthManager, private val clientDao: ClientDao, private val eventDao : EventDao) : BasePresenter<ClientPersonalEventDetailsContract.CLientPersonalEventDetailsView>,
     ClientPersonalEventDetailsContract.ClientPersonalEventDetailsPresenter {
+    override fun getUsername() : String {
+        return auth.getUserName()
+    }
 
 
     private lateinit var view : ClientPersonalEventDetailsContract.CLientPersonalEventDetailsView

@@ -21,7 +21,6 @@ class ClientDetailsFormActivity  : AppCompatActivity(), ClientDetailsFormContrac
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_details_form)
         presenter.setView(this)
-        println("CLIENT DETAILS")
 
         nametext.text = presenter.returnUserName()
         client_details_button.setOnClickListener{

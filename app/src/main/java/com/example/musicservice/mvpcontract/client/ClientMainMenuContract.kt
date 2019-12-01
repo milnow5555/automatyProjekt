@@ -5,7 +5,6 @@ interface ClientMainMenuContract  {
         fun goBackToLogin()
     }
     interface ClientMainMenuPresenter{
-        fun exampleMethod()
         fun returnUserName(): String
         fun logOut()
     }

@@ -28,4 +28,8 @@ abstract class PresenterModule {
     abstract fun clientAddEventPresenter(clientAddEventPresenter: ClientAddEventPresenter) : ClientAddEventContract.ClientAddEventPresenter
     @Binds
     abstract fun clientEventDetailsPresenter(clientPersonaleEventDetailsPresenter : ClientPersonalEventDetailsPresenter ) : ClientPersonalEventDetailsContract.ClientPersonalEventDetailsPresenter
+    @Binds
+    abstract fun clientPersonalProfileEditPresenter(clientPersonalProfileEditPresenter : ClientPersonalProfileEditPresenter) : ClientPersonalProfileEditContract.ClientPersonalProfileEditPresenter
+    @Binds
+    abstract fun clientEventListPresenter(clientEventListPresenter : ClientEventListPresenter) : ClientEventListContract.ClientEventListPresenter
 }

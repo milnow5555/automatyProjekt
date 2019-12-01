@@ -18,7 +18,6 @@ class LoginPresenter @Inject constructor(private val auth : FirebaseAuthManager)
     }
     override fun onSignInButtonClicked(email: String, password: String) {
         if(inputIsValid(email, password)){
-            println("TU POKAZUJE PROGRESS BAR!!!!!!!!!!!1111")
             view.showProgressBar()
             auth.login(email, password).addOnSuccessListener  {
                 /*TODO delegating to appropriate main menu

@@ -24,6 +24,9 @@ class ClientPersonalProfileActivity : AppCompatActivity(), ClientPersonalProfile
         myevents.setOnClickListener{
             startActivity(Intent(this, ClientPersonalEventListActivity::class.java))
         }
+        editprofile.setOnClickListener{
+            startActivity(Intent(this, ClientPersonalProfileEditActivity::class.java))
+        }
     }
     override fun setClientPersonalProfileData(client : Client?) {
         client_profile_email.text = client?.email ?: "BRAK"

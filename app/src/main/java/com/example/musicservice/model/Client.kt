@@ -1,6 +1,7 @@
 package com.example.musicservice.model
 
-data class Client(val name : String = "",
+data class Client(var id : String = "",
+                  val name : String = "",
                   val surname : String = "",
                   val company : String = "",
                   val description : String = "",

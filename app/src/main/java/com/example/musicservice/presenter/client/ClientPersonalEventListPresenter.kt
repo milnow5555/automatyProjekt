@@ -14,8 +14,6 @@ class ClientPersonalEventListPresenter @Inject constructor(private val auth : Fi
 
     private lateinit var personalEventListView : ClientPersonalEventListContract.ClientPersonalEventListView
 
-
-
     override fun setView(view: ClientPersonalEventListContract.ClientPersonalEventListView) {
         personalEventListView = view
     }

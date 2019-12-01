@@ -19,6 +19,7 @@ class ClientDetailsFormPresenter @Inject constructor(private val auth : Firebase
     override fun handleForm(client: Client) {
         client.email = auth.getUserEmail()
         client.username = auth.getUserName()
+        client.id = auth.getUserId()
         println(client)
         clientDao.save(client)
         view.startMainMenuActivity()

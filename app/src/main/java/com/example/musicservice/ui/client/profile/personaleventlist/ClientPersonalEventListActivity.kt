@@ -22,7 +22,6 @@ class ClientPersonalEventListActivity : AppCompatActivity(), ClientPersonalEvent
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_personal_eventlist)
         presenter.setView(this)
-        println("RECYCLER VIEW ACTIVITY PERSONAL EVENT LIST")
         eventlist_usernametext.text = presenter.getUsername()
         floatingActionButton.setOnClickListener{
             startActivity(Intent(this, ClientAddEventActivity::class.java))
@@ -31,8 +30,6 @@ class ClientPersonalEventListActivity : AppCompatActivity(), ClientPersonalEvent
     }
 
     override fun initializeRecyclerView(clientsEventList : MutableMap<String, MutableList<Event?>>) {
-        println("RECYCLER VIEW INITIALIZATION")
-
         val itemOnClick: (View, Int, String?) -> Unit = { view, position, eventId ->
             onItemClickedInRecyclerView(eventId)
         }
@@ -45,7 +42,6 @@ class ClientPersonalEventListActivity : AppCompatActivity(), ClientPersonalEvent
     }
 
     override fun onItemClickedInRecyclerView(eventId : String?) {
-        println("======================================CLICKED AND REACTED========================================== EVENT: ${eventId}")
         var intent : Intent = Intent(this, ClientPersonalEventDetailsActivity::class.java)
         intent.putExtra("eventid", eventId)
         startActivity(intent)

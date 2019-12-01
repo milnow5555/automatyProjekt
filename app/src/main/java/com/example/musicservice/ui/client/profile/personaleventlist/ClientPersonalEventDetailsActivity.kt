@@ -23,7 +23,7 @@ class ClientPersonalEventDetailsActivity : AppCompatActivity(), ClientPersonalEv
         setContentView(R.layout.activity_client_personal_eventdetails)
         presenter.setView(this)
         presenter.loadClientData()
-        //TODO get appropriate id to pass to presenter to display event consistent with that id
+
         presenter.loadEventData(intent.getStringExtra("eventid"))
     }
 
@@ -36,6 +36,7 @@ class ClientPersonalEventDetailsActivity : AppCompatActivity(), ClientPersonalEv
     }
     override fun setClientData(client: Client?) {
         now_event_owner.text = client?.username
+        eventlist_usernametext_now.text = presenter.getUsername()
     }
 
     override fun showProgressBar() {

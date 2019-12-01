@@ -11,10 +11,6 @@ class ClientMainMenuPresenter @Inject constructor(private val auth : FirebaseAut
     override fun setView(view: ClientMainMenuContract.ClientMainMenuView) {
         this.mainmenuView = view
     }
-    override fun exampleMethod() {
-        println("CLIENT ${auth.getUserName()}")
-    }
-
     override fun returnUserName(): String {
         return auth.getUserName()
     }
