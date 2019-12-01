@@ -22,8 +22,6 @@ class ClientPersonalEventDetailsActivity : AppCompatActivity(), ClientPersonalEv
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_personal_eventdetails)
         presenter.setView(this)
-        presenter.loadClientData()
-
         presenter.loadEventData(intent.getStringExtra("eventid"))
     }
 

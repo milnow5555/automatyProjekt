@@ -37,13 +37,14 @@ class ClientPersonalEventDetailsPresenter @Inject constructor(private val auth :
                     event = dataSnapshot.getValue(Event::class.java)
                     view.hideProgressBar()
                     view.setEventData(event)
+                    loadClientData(event)
                 }
             }
         })
     }
 
-    override fun loadClientData() {
-        val concreteUser = clientDao.getByCurrentUserId()
+    private fun loadClientData(event : Event?) {
+        val concreteUser = clientDao.getById(event?.ownerId)
         var client : Client?
         view.showProgressBar()
 

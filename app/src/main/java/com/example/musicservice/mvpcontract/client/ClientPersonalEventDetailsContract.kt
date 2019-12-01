@@ -12,7 +12,6 @@ interface ClientPersonalEventDetailsContract {
     }
     interface ClientPersonalEventDetailsPresenter {
         fun loadEventData(eventId : String)
-        fun loadClientData()
         fun getUsername() : String
     }
 }

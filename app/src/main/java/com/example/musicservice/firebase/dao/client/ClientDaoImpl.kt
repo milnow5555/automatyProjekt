@@ -29,9 +29,10 @@ class ClientDaoImpl @Inject constructor(private val auth : FirebaseAuthManager, 
         databaseClientsReference.child("/${auth.getUserId()}").setValue(client)
     }
 
-    override fun getByCurrentUserId(): DatabaseReference {
-        return databaseClientsReference.child("/${auth.getUserId()}")
-    }
+    override fun getById(id : String?): DatabaseReference = databaseClientsReference.child("/${id}")
+
+    override fun getByCurrentUserId(): DatabaseReference = databaseClientsReference.child("/${auth.getUserId()}")
+
 
     override fun getByName(name: String): Client {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
