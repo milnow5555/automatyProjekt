@@ -1,6 +1,6 @@
 package com.example.musicservice.model
 
-data class MusicProvider(var id : String = "",
+data class MusicProvider(var id : String? = "",
                          val name : String = "",
                          val active : Boolean = true,
                          val city : String = "",
@@ -8,12 +8,12 @@ data class MusicProvider(var id : String = "",
                          val rating : Double = 0.0,
                          val musicProvidersApproachingEvents : List<Event> = listOf(),
                          val musicProvidersInvitations : List<Event> = listOf(),
-                         val musicProviderType : MusicPoviderType = MusicPoviderType.Musician,
-                         val musicalPreferences: MusicProviderMusicalPreferences = MusicProviderMusicalPreferences.Jazz) {
+                         val musicProviderType : String = "",
+                         val musicalPreferences: String  = "") {
 
 
     enum class MusicPoviderType {
-        Orchestra, Band, BigBand, Musician, Composer, Producer
+        Orchestra,Jazz_Band, BigBand, Musician, Composer, Producer
     }
     enum class MusicProviderMusicalPreferences {
         Jazz, Metal, ClassicalMusic, HardRock, HipHop, Regge

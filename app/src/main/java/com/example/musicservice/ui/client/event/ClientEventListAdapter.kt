@@ -17,8 +17,7 @@ class ClientEventListAdapter(private val itemClickAction: (view: View, position:
                              private val clientUsernameToPersonalEventsMap: MutableMap<Client?, MutableList<Event?>>,
                              private val images : MutableList<String>,
                              private val context : Context
-)
-    : RecyclerView.Adapter<ClientEventListAdapter.ClientEventListViewHolder>() {
+) : RecyclerView.Adapter<ClientEventListAdapter.ClientEventListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientEventListViewHolder {
         val view : View = LayoutInflater.from(parent.context).inflate(R.layout.layout_listitem_client_personalevents,parent, false)

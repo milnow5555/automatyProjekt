@@ -7,5 +7,6 @@ interface ClientMainMenuContract  {
     interface ClientMainMenuPresenter{
         fun returnUserName(): String
         fun logOut()
+        fun initMusicProviders()
     }
 }

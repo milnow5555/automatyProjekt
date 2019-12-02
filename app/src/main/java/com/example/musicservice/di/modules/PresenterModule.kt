@@ -32,4 +32,6 @@ abstract class PresenterModule {
     abstract fun clientPersonalProfileEditPresenter(clientPersonalProfileEditPresenter : ClientPersonalProfileEditPresenter) : ClientPersonalProfileEditContract.ClientPersonalProfileEditPresenter
     @Binds
     abstract fun clientEventListPresenter(clientEventListPresenter : ClientEventListPresenter) : ClientEventListContract.ClientEventListPresenter
+    @Binds
+    abstract fun musicProviderListPresenter(mpListPres : MusicProviderListPresenter) : MusicProviderListContract.MusicProviderListPresenter
 }

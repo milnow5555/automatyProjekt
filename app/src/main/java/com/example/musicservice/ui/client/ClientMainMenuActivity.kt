@@ -10,6 +10,7 @@ import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.mvpcontract.client.ClientMainMenuContract
 import com.example.musicservice.presenter.client.ClientMainMenuPresenter
 import com.example.musicservice.ui.client.event.ClientEventListActivity
+import com.example.musicservice.ui.client.musicproviderlist.MusicProviderListActivity
 import com.example.musicservice.ui.client.profile.ClientPersonalProfileActivity
 import com.example.musicservice.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_client_main_menu.*
@@ -24,7 +25,7 @@ class ClientMainMenuActivity : AppCompatActivity(), ClientMainMenuContract.Clien
         setContentView(R.layout.activity_client_main_menu)
         presenter.setView(this)
         cli_menu_username.text = presenter.returnUserName()
-
+        presenter.initMusicProviders()
         initAll()
     }
 
@@ -43,6 +44,11 @@ class ClientMainMenuActivity : AppCompatActivity(), ClientMainMenuContract.Clien
         }
         activity_client_main_menu_mplist_button3.setOnClickListener{
             startActivity(Intent(this, ClientEventListActivity::class.java))
+        }
+        activity_client_main_menu_mplist_button4.setOnClickListener{
+            val intent = Intent(this, MusicProviderListActivity::class.java)
+            intent.putExtra("first_time", "first")
+            startActivity(intent)
         }
     }
 

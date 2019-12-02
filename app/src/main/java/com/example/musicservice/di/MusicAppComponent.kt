@@ -26,9 +26,10 @@ interface MusicAppComponent {
     fun clientPersonalEventDetailsPresenter() : ClientPersonalEventDetailsPresenter
     fun clientPersonalProfileEditPresenter() : ClientPersonalProfileEditPresenter
     fun clientEventListPresenter() : ClientEventListPresenter
-
+    fun musicProviderListPresenter(): MusicProviderListPresenter
     fun clientDao() : ClientDao
     fun musicProviderDao() : MusicProviderDao
     fun eventDao() : EventDao
+
 
 }

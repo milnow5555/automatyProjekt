@@ -26,6 +26,7 @@
         <activity android:name=".ui.client.profile.personaleventlist.ClientPersonalEventDetailsActivity"></activity>
         <activity android:name=".ui.client.profile.ClientPersonalProfileEditActivity"></activity>
         <activity android:name=".ui.client.event.ClientEventListActivity"></activity>
+        <activity android:name=".ui.client.musicproviderlist.MusicProviderListActivity"></activity>
     </application>
 
 </manifest>

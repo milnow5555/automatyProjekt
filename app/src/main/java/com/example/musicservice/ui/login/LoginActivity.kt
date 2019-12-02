@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
         setContentView(R.layout.activity_login)
         presenter.setView(this)
         presenter.initLogOut()
+        presenter.initMusicProviders()
         setAllActivityComponents()
     }
 

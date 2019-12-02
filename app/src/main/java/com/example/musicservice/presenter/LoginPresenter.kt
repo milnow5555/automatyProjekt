@@ -3,11 +3,13 @@ package com.example.musicservice.presenter
 import android.widget.Toast
 import com.example.musicservice.common.Validator
 import com.example.musicservice.firebase.auth.FirebaseAuthManager
+import com.example.musicservice.model.MusicProvider
 import com.example.musicservice.mvpcontract.LoginContract
+import com.google.firebase.database.FirebaseDatabase
 import timber.log.Timber
 import javax.inject.Inject
 
-class LoginPresenter @Inject constructor(private val auth : FirebaseAuthManager) : BasePresenter<LoginContract.LoginView>, LoginContract.LoginPresenter {
+class LoginPresenter @Inject constructor(private val auth : FirebaseAuthManager, private var database: FirebaseDatabase) : BasePresenter<LoginContract.LoginView>, LoginContract.LoginPresenter {
 
     private lateinit var view : LoginContract.LoginView
     override fun setView(view: LoginContract.LoginView) {
@@ -30,6 +32,10 @@ class LoginPresenter @Inject constructor(private val auth : FirebaseAuthManager)
                 view.hideProgressBar()
                 }
         }
+    }
+
+    override fun initMusicProviders() {
+
     }
 
     override fun onSignUpButtonClicked() = view.delegateToRegistrationActivity()

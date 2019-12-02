@@ -16,6 +16,7 @@ interface LoginContract {
         fun onSignInButtonClicked(email:String, password:String)
         fun onSignUpButtonClicked()
         fun initLogOut()
+        fun initMusicProviders()
     }
 
 }
