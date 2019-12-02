@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +37,14 @@ class MusicProviderListAdapter(private val musicProviderList: MutableList<MusicP
         holder.mpType.text = musicProviderList[position]?.musicProviderType
         holder.mpId = musicProviderList[position]?.id
         holder.mpCity.text = musicProviderList[position]?.city
+        holder.mActive.visibility = ImageView.GONE
+        if(musicProviderList[position]!!.active){
+            holder.mActive.visibility = ImageView.VISIBLE
+        }
+        println("--------------------------------------------------- RATING ${musicProviderList[position]?.rating!!.toFloat()}")
+        holder.starsRating.rating = musicProviderList[position]?.rating!!.toFloat()
+
+
     }
 
 
@@ -46,6 +56,8 @@ class MusicProviderListAdapter(private val musicProviderList: MutableList<MusicP
         val mpName: TextView
         val mpType: TextView
         val mpCity : TextView
+        val mActive : ImageView
+        val starsRating : RatingBar
         var mpId : String?
 
 
@@ -55,6 +67,8 @@ class MusicProviderListAdapter(private val musicProviderList: MutableList<MusicP
             mpType = myItemView.music_provider_type
             mpCity = myItemView.city_text
             mpId = "Error!"
+            mActive = myItemView.activeimage
+            starsRating = myItemView.stars_rating
         }
     }
 }

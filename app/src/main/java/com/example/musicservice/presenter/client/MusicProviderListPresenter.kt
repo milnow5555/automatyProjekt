@@ -35,29 +35,35 @@ class MusicProviderListPresenter @Inject constructor(private val auth : Firebase
 
     private fun sortThisList(listOfMusicProviders : MutableList<MusicProvider?>, name:Boolean, rating: Boolean, city: Boolean, active: Boolean) : MutableList<MusicProvider?> {
 
-        var tempList : MutableList<MusicProvider?>
         if(active) {
             println(" --------------------------------------------------------------FILTERED")
-            val filtered = listOfMusicProviders.filter { ac -> ac!!.active }
+            val list = listOfMusicProviders.filter { ac -> ac!!.active }
+            val toMutableList = list.toMutableList()
+            sortFiltered(toMutableList, name, rating, city)
+            toMutableList.forEach{
+                println("FILTERD  ${toMutableList}" )
+            }
+            return toMutableList
+        }else {
+            sortFiltered(listOfMusicProviders, name, rating, city)
+            return listOfMusicProviders
         }
-        return sortFiltered(listOfMusicProviders, name, rating, city)
+
     }
 
-    private fun sortFiltered(listOfMusicProviders : MutableList<MusicProvider?>, name:Boolean, rating: Boolean, city: Boolean) : MutableList<MusicProvider?> {
+    private fun sortFiltered(listOfMusicProviders : MutableList<MusicProvider?>, name:Boolean, rating: Boolean, city: Boolean) {
         var tempList : MutableList<MusicProvider?>
         if(name){
             println(" --------------------------------------------------------------SORTED BY NAME")
             listOfMusicProviders.sortBy { it?.name }
         }
-        else if (rating) {
+        if (rating) {
             println(" --------------------------------------------------------------SORTED BY RATING")
-            listOfMusicProviders.sortBy { it?.rating }
+            listOfMusicProviders.sortByDescending{ it?.rating }
         }
-        else if (city) {
+        if (city) {
             println(" --------------------------------------------------------------SORTED BY CITY")
             listOfMusicProviders.sortBy { it?.city }
         }
-
-        return listOfMusicProviders
     }
 }

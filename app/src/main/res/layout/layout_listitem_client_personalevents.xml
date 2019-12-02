@@ -104,7 +104,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/clip4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"></de.hdodenhof.circleimageview.CircleImageView>

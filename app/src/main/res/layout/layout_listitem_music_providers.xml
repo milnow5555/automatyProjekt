@@ -40,6 +40,7 @@
         app:layout_constraintStart_toEndOf="@+id/constraintLayout9">
 
         <RatingBar
+            android:id="@+id/stars_rating"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="78dp"
             android:layout_height="16dp"
@@ -82,6 +83,17 @@
             android:text="City"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/activeimage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/active" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
