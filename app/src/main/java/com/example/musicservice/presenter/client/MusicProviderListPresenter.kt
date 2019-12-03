@@ -118,7 +118,7 @@ class MusicProviderListPresenter @Inject constructor(private val auth : Firebase
         return filteredMusicProvidersList
     }
     private fun returnAppropriatePredicate(feature : String ,mapOfFeatures: MutableMap<String, String>, key : String) : Boolean{
-        if(mapOfFeatures.containsKey(key)) return feature == mapOfFeatures.get(key)
+        if(mapOfFeatures.containsKey(key)) return feature.toLowerCase() == mapOfFeatures.get(key)!!.toLowerCase()
         else return true
     }
 

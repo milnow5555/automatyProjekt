@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/music_providers_row"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="115dp"
     android:layout_marginBottom="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,8 +13,8 @@
         android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@+id/constraintLayout20"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_weight="1">
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/client_event_list_circleimage"
@@ -44,7 +43,7 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="78dp"
             android:layout_height="16dp"
-            android:layout_marginEnd="90dp"
+            android:layout_marginEnd="64dp"
             android:layout_marginBottom="16dp"
             android:numStars="5"
             android:rating="4"
@@ -56,12 +55,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
             android:text="Example name big name"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/music_provider_type"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/music_provider_type"
@@ -69,20 +68,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Jazz band"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/music_provider_name"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/city_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
             android:text="City"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/music_provider_type" />
 
         <ImageView
             android:id="@+id/activeimage"
@@ -93,6 +90,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/active" />
+
+        <TextView
+            android:id="@+id/preftext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:text="Pref"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

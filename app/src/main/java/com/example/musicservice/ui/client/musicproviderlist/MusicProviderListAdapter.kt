@@ -38,6 +38,7 @@ class MusicProviderListAdapter(private val musicProviderList: MutableList<MusicP
         holder.mpId = musicProviderList[position]?.id
         holder.mpCity.text = musicProviderList[position]?.city
         holder.mActive.visibility = ImageView.GONE
+        holder.mPref.text = musicProviderList[position]?.musicalPreferences
         if(musicProviderList[position]!!.active){
             holder.mActive.visibility = ImageView.VISIBLE
         }
@@ -58,6 +59,7 @@ class MusicProviderListAdapter(private val musicProviderList: MutableList<MusicP
         val mpCity : TextView
         val mActive : ImageView
         val starsRating : RatingBar
+        val mPref : TextView
         var mpId : String?
 
 
@@ -69,6 +71,7 @@ class MusicProviderListAdapter(private val musicProviderList: MutableList<MusicP
             mpId = "Error!"
             mActive = myItemView.activeimage
             starsRating = myItemView.stars_rating
+            mPref = myItemView.preftext
         }
     }
 }

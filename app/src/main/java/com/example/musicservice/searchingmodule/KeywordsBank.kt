@@ -43,7 +43,7 @@ class KeywordsBank @Inject constructor(private val musicProviderDao: MusicProvid
 
     private fun instantiateRateBank() {
         rateMutableSet.addAll(mutableSetOf(
-            "rate","rated","top rated","best","finest","most","favourable", "leading", "outstanding",
+            "rate","rated","top rated","best", "top","finest","most","favourable", "leading", "outstanding",
             "perfect", "terrific", "capital", "champion", "prime","foremost","principal","first-class"
         ))
     }
