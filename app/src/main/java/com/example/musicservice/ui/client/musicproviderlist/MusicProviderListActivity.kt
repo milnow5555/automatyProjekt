@@ -10,6 +10,8 @@ import com.example.musicservice.R
 import com.example.musicservice.model.MusicProvider
 import com.example.musicservice.presenter.client.MusicProviderListPresenter
 import com.example.musicservice.mvpcontract.client.MusicProviderListContract
+import com.example.musicservice.searchingmodule.KeywordsBank
+import com.example.musicservice.searchingmodule.MusicProviderKeywordsSearcher
 import com.example.musicservice.ui.client.ClientMainMenuActivity
 import kotlinx.android.synthetic.main.activity_client_event_list.*
 import kotlinx.android.synthetic.main.activity_client_music_providers_list.*
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_client_music_providers_list.*
 class MusicProviderListActivity : AppCompatActivity(), MusicProviderListContract.MusicProviderListView {
 
     private val presenter : MusicProviderListPresenter = MusicApp.component.musicProviderListPresenter()
+    private val searcher : MusicProviderKeywordsSearcher = MusicApp.component.musicProviderKeywordsSearcher()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,6 @@ class MusicProviderListActivity : AppCompatActivity(), MusicProviderListContract
             startActivity(intent)
         }
 
-
         val stringExtra = intent.getStringExtra("first_time")
         if(stringExtra == "first") presenter.obtainAllMusicProviders(false,false,false,false)
         else presenter.obtainAllMusicProviders(
@@ -40,23 +42,38 @@ class MusicProviderListActivity : AppCompatActivity(), MusicProviderListContract
             intent.getBooleanExtra("active", false))
 
         button_confirm.setOnClickListener{
-            var nameCheckBox : Boolean = false
-            var ratingCheckBox : Boolean = false
-            var cityCheckBox : Boolean = false
-            var activeCheckBox : Boolean = false
-            var firstTime : String = "nein"
+            if(searchbox.text.toString().isEmpty()) {
+                var nameCheckBox : Boolean = false
+                var ratingCheckBox : Boolean = false
+                var cityCheckBox : Boolean = false
+                var activeCheckBox : Boolean = false
+                var firstTime : String = "nein"
 
-            if(namecheckbox.isChecked) nameCheckBox = true
-            if(ratingcheckbox.isChecked) ratingCheckBox = true
-            if(citycheckbox.isChecked) cityCheckBox = true
-            if(activecheckbox.isChecked) activeCheckBox = true
-            var intent : Intent = Intent(this, MusicProviderListActivity::class.java)
-            intent.putExtra("first_time", firstTime)
-            intent.putExtra("name", nameCheckBox)
-            intent.putExtra("rating", ratingCheckBox)
-            intent.putExtra("city", cityCheckBox)
-            intent.putExtra("active", activeCheckBox)
-            startActivity(intent)
+                if(namecheckbox.isChecked) nameCheckBox = true
+                if(ratingcheckbox.isChecked) ratingCheckBox = true
+                if(citycheckbox.isChecked) cityCheckBox = true
+                if(activecheckbox.isChecked) activeCheckBox = true
+                var intent : Intent = Intent(this, MusicProviderListActivity::class.java)
+                intent.putExtra("first_time", firstTime)
+                intent.putExtra("name", nameCheckBox)
+                intent.putExtra("rating", ratingCheckBox)
+                intent.putExtra("city", cityCheckBox)
+                intent.putExtra("active", activeCheckBox)
+                startActivity(intent)
+            } else {
+                println("SEARCH BOX NOT EMPTY")
+
+                var findByNameLambda : (String) -> Unit = {
+                    presenter.findByName(it)
+                }
+
+                var filterByFeaturesLambda : (MutableMap<String,String>) -> Unit = {
+                    presenter.filterByFeatures(it)
+                }
+                searcher.search(searchbox.text.toString(), findByNameLambda, filterByFeaturesLambda)
+
+
+            }
         }
     }
 

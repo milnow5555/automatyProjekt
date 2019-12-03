@@ -11,5 +11,7 @@ interface MusicProviderListContract {
     interface MusicProviderListPresenter {
         fun obtainAllMusicProviders(name : Boolean, rating : Boolean, city : Boolean, active : Boolean)
         fun getUsername(): String
+        fun findByName(it: String)
+        fun filterByFeatures(mapOfFeatures: MutableMap<String, String>)
     }
 }

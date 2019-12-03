@@ -66,4 +66,63 @@ class MusicProviderListPresenter @Inject constructor(private val auth : Firebase
             listOfMusicProviders.sortBy { it?.city }
         }
     }
+
+    override fun findByName(name: String) {
+        var viewInvoker : (listOfMusicProviders:MutableList<MusicProvider?>) -> Unit = {
+            println("view invoker")
+            view.initializeRecyclerView(filterByName(it, name))
+        }
+        var progressBarInvoker : () -> Unit = {
+            view.progressBarReaction()
+        }
+
+        musicProviderDao.getAllMusicProv(viewInvoker = viewInvoker, progressBarInvoker = progressBarInvoker)
+    }
+
+    override fun filterByFeatures(mapOfFeatures: MutableMap<String, String>) {
+        var viewInvoker : (listOfMusicProviders:MutableList<MusicProvider?>) -> Unit = {
+            view.initializeRecyclerView(filteringByFeatures(it, mapOfFeatures))
+        }
+        var progressBarInvoker : () -> Unit = {
+            view.progressBarReaction()
+        }
+
+        musicProviderDao.getAllMusicProv(viewInvoker = viewInvoker, progressBarInvoker = progressBarInvoker)
+    }
+
+    private fun filteringByFeatures(listOfAllMusicProviders: MutableList<MusicProvider?>, mapOfFeatures: MutableMap<String, String>): MutableList<MusicProvider?> {
+        if(mapOfFeatures.isEmpty()) {
+            println("PUSTA MAP OF FEATURES")
+            return mutableListOf()
+        }
+
+        println("MAP OF FEATURES")
+        mapOfFeatures.forEach{
+            println("KEY ${it.key}  VALUE  ${it.value}")
+        }
+
+        println("-----FILTER BY FEATURES----")
+        println("Entry list")
+        listOfAllMusicProviders.forEach{println(it)}
+        val filteredMusicProvidersList = listOfAllMusicProviders
+            .filter { returnAppropriatePredicate(it!!.musicProviderType, mapOfFeatures, "type") }
+            .filter { returnAppropriatePredicate(it!!.musicalPreferences, mapOfFeatures, "pref") }
+            .filter { returnAppropriatePredicate(it!!.city, mapOfFeatures, "city") }
+            .toMutableList()
+        println("Exit list")
+        filteredMusicProvidersList.forEach{println(it)}
+
+        if(mapOfFeatures.containsKey("rate")){
+            filteredMusicProvidersList.sortByDescending { it!!.rating }
+        }
+        return filteredMusicProvidersList
+    }
+    private fun returnAppropriatePredicate(feature : String ,mapOfFeatures: MutableMap<String, String>, key : String) : Boolean{
+        if(mapOfFeatures.containsKey(key)) return feature == mapOfFeatures.get(key)
+        else return true
+    }
+
+
+    private fun filterByName(listOfProviders : MutableList<MusicProvider?>, name : String) = listOfProviders.filter { it!!.name == name }.toMutableList()
+
 }

@@ -5,4 +5,5 @@ import com.example.musicservice.model.MusicProvider
 
 interface MusicProviderDao : FirebaseDao<MusicProvider> {
     fun getAllMusicProv(viewInvoker : (mapOfEvents:MutableList<MusicProvider?>) -> Unit, progressBarInvoker : () -> Unit)
+    fun getAllMusicProv(nameBankFulfillment : (MutableSet<MusicProvider>) -> Unit)
 }

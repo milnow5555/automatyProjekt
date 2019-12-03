@@ -1,7 +1,6 @@
 package com.example.musicservice.di
 
 import com.example.musicservice.di.modules.AppModule
-import com.example.musicservice.di.modules.FirebaseModule
 import com.example.musicservice.di.modules.PresenterModule
 import com.example.musicservice.firebase.dao.client.ClientDao
 import com.example.musicservice.firebase.dao.event.EventDao
@@ -9,6 +8,8 @@ import com.example.musicservice.firebase.dao.musicprovider.MusicProviderDao
 import com.example.musicservice.presenter.LoginPresenter
 import com.example.musicservice.presenter.RegisterPresenter
 import com.example.musicservice.presenter.client.*
+import com.example.musicservice.searchingmodule.KeywordsBank
+import com.example.musicservice.searchingmodule.MusicProviderKeywordsSearcher
 import dagger.Component
 import javax.inject.Singleton
 
@@ -30,6 +31,9 @@ interface MusicAppComponent {
     fun clientDao() : ClientDao
     fun musicProviderDao() : MusicProviderDao
     fun eventDao() : EventDao
+    fun keywordsBank() : KeywordsBank
+    @Singleton
+    fun musicProviderKeywordsSearcher(): MusicProviderKeywordsSearcher
 
 
 }

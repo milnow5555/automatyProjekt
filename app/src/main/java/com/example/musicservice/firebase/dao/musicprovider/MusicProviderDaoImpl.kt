@@ -44,7 +44,25 @@ class MusicProviderDaoImpl @Inject constructor(private val auth : FirebaseAuth, 
                 viewInvoker.invoke(listOfMps)
             }
         })
+    }
 
+    override fun getAllMusicProv(allFeaturesBankFullfillment: (MutableSet<MusicProvider>) -> Unit) {
+        databaseMusicProv.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                println("Error")
+            }
+
+            override fun onDataChange(musicProviders: DataSnapshot) {
+                val listOfMps : MutableList<MusicProvider?> = mutableListOf()
+                for (snap in musicProviders.children){
+                    listOfMps.add(snap.getValue(MusicProvider::class.java))
+                }
+                val toMutableSet = listOfMps.toMutableSet()
+                val map = listOfMps.map { it!! }.toMutableSet()
+
+                allFeaturesBankFullfillment.invoke(map)
+            }
+        })
     }
 
 }

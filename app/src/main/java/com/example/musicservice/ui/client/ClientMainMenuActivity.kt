@@ -3,18 +3,16 @@ package com.example.musicservice.ui.client
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.musicservice.MusicApp
 import com.example.musicservice.MusicApp.Companion.component
 import com.example.musicservice.R
-import com.example.musicservice.firebase.auth.FirebaseAuthManager
 import com.example.musicservice.mvpcontract.client.ClientMainMenuContract
 import com.example.musicservice.presenter.client.ClientMainMenuPresenter
 import com.example.musicservice.ui.client.event.ClientEventListActivity
 import com.example.musicservice.ui.client.musicproviderlist.MusicProviderListActivity
 import com.example.musicservice.ui.client.profile.ClientPersonalProfileActivity
+import com.example.musicservice.searchingmodule.KeywordsBank
 import com.example.musicservice.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_client_main_menu.*
-import javax.inject.Inject
 
 class ClientMainMenuActivity : AppCompatActivity(), ClientMainMenuContract.ClientMainMenuView {
 
